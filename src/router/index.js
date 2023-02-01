@@ -1,5 +1,4 @@
 import {createRouter, createWebHistory } from "vue-router"
-import home from "@/home.vue";
 import App from "@/App.vue";
 import Main from "@/Main.vue";
 import Card from "@/Card.vue";

@@ -7,30 +7,34 @@ import {CardManager} from "@/class/card_manager";
 
 <template>
   <div class="column">
-  <div class = "center">
-    <h1> {{ title }}</h1>
-    <div >
-      <input class="searchField" type="text"
-             @input="event=>{
+    <div class="center">
+      <h1> {{ title }}</h1>
+      <div>
+        <input class="searchField" type="text"
+               @input="event=>{
         searchString = event.target.value;
       }">
-    </div >
-    <router-link :to="{ name:'addCard' }">
-      <div class="AddPost" @click="()=>{
-      }">
-        <p>Добавить новость</p>
       </div>
-    </router-link>
-  </div>
-  <div class="blocCards">
-    <div class="card" v-for="post in CardManager.cardList.filter((item)=> (item.title.includes(searchString) || item.information.includes(searchString) ))">
-      <router-link :to="{ name:'cardScreen', params: { title: post.title, }, query:{information: post.information}} ">
-        <p class="boxTitle">{{ post.title }}</p>
-        <p class="boxInformation">{{ post.information }}</p>
-      </router-link>
+      <div class="AddPost">
+        <router-link :to="{ name:'addCard' }">
+          <div @click="()=>{
+      }">
+            <p>Добавить персонажа</p>
+          </div>
+        </router-link>
+      </div>
+    </div>
+    <div class="blocCards">
+      <div class="card"
+           v-for="post in CardManager.cardList.filter((item)=> (item.title.toLowerCase().includes(searchString.toLowerCase()) || item.information.toLowerCase().includes(searchString.toLowerCase()) ))">
+        <router-link
+            :to="{ name:'cardScreen', params: { title: post.title, }, query:{information: post.information, character: post.character, appearance: post.appearance}} ">
+          <p class="boxTitle">{{ post.title }}</p>
+          <p class="boxInformation">{{ post.information }}</p>
+        </router-link>
+      </div>
     </div>
   </div>
-    </div>
 </template>
 
 <script>
@@ -41,12 +45,12 @@ export default {
   name: 'Main',
   data() {
     return {
-      title: 'kek',
+      title: 'HoMM 5',
       searchString: '',
     }
   },
   methods: {
-    log(huita){
+    log(huita) {
       console.log(huita)
     }
   },
@@ -56,14 +60,14 @@ export default {
 
 <style>
 
-.column{
-  display:flex;
+.column {
+  display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
 }
 
-.center{
+.center {
   margin-left: auto;
   margin-right: auto;
 }
@@ -137,10 +141,11 @@ h1 {
 
 .searchField {
   display: inline;
+  color: rgba(215, 200, 142, 0.64);
 
-  background: #390065; /* Цвет фона */
-  width: 700px; /* Ширина блока */
-  padding: 10px; /* Поля */
+  background: #390065;
+  width: 700px;
+  padding: 10px;
   margin: 10px;
   border-radius: 25px;
   alignment: center;
