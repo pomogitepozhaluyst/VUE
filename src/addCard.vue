@@ -27,9 +27,9 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="back" @click="this.$router.push({ name: 'main'})">
-          <p >Вернуться</p>
-    </div>
+  <div class="back" @click="this.$router.push({ name: 'main'})">
+    <p>Вернуться</p>
+  </div>
   <div class="column">
 
     <div class="center">
@@ -53,15 +53,16 @@ export default defineComponent({
              @input="event=>{
         appearance = event.target.value;
       }">
-      <div class="AddPost">
-        <router-link :to="{ name:'main'}" class="l">
+      <router-link :to="{ name:'main'}" class="l">
+        <div class="AddPost">
+
           <div
               @click="()=>{CardManager.cardList.push(new Card(title, information, character, appearance))
     }">
             <p>Добавить новость</p>
           </div>
-        </router-link>
-      </div>
+        </div>
+      </router-link>
     </div>
   </div>
 
@@ -75,15 +76,16 @@ export default defineComponent({
   display: flex;
   background-color: rgba(210, 187, 97, 0.99);
   justify-content: flex-start;
-    width: 30%;
+  width: 30%;
   padding: 20px;
   margin: 10px;
   border-radius: 18px;
 }
+
 .back:hover {
   justify-content: left;
   align-content: flex-start;
-    width: 30%;
+  width: 30%;
   padding: 20px;
   border-radius: 18px;
   background-color: rgba(210, 187, 97, 0.64);

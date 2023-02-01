@@ -15,14 +15,17 @@ import {CardManager} from "@/class/card_manager";
         searchString = event.target.value;
       }">
       </div>
-      <div class="AddPost">
+
         <router-link :to="{ name:'addCard' }">
+      <div class="AddPost">
+
           <div @click="()=>{
       }">
             <p>Добавить персонажа</p>
           </div>
-        </router-link>
       </div>
+
+        </router-link>
     </div>
     <div class="blocCards">
       <div class="card"
