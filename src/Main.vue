@@ -29,11 +29,11 @@ import {CardManager} from "@/class/card_manager";
     </div>
     <div class="blocCards">
       <div class="card"
-           v-for="post in CardManager.cardList.filter((item)=> (item.title.toLowerCase().includes(searchString.toLowerCase()) || item.information.toLowerCase().includes(searchString.toLowerCase()) ))">
+           v-for="card in CardManager.cardList.filter((item)=> (item.title.toLowerCase().includes(searchString.toLowerCase()) || item.information.toLowerCase().includes(searchString.toLowerCase()) ))">
         <router-link
-            :to="{ name:'cardScreen', params: { title: post.title, }, query:{information: post.information, character: post.character, appearance: post.appearance}} ">
-          <p class="boxTitle">{{ post.title }}</p>
-          <p class="boxInformation">{{ post.information }}</p>
+            :to="{ name:'cardScreen', params: { title: card.title, }, query:{information: card.information, character: card.character, appearance: card.appearance}} ">
+          <p class="boxTitle">{{ card.title }}</p>
+          <p class="boxInformation">{{ card.information }}</p>
         </router-link>
       </div>
     </div>
@@ -52,12 +52,6 @@ export default {
       searchString: '',
     }
   },
-  methods: {
-    log(huita) {
-      console.log(huita)
-    }
-  },
-
 }
 </script>
 
